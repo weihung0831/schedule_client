@@ -1,0 +1,153 @@
+/* Button */
+.button-base {
+  @apply h-9 px-6 
+    /* 主要狀態 */
+    bg-gradient-to-r from-indigo-800 via-blue-800 to-blue-900
+    text-sky-100 text-sm font-medium
+    rounded-full border border-blue-700/20
+    shadow-md shadow-blue-900/30
+    relative overflow-hidden
+    
+    /* Hover 狀態 */
+    hover:from-indigo-700 hover:via-blue-700 hover:to-blue-800
+    hover:text-white
+    hover:border-blue-600/30
+    hover:shadow-lg hover:shadow-blue-900/40
+    hover:translate-y-[-1px]
+    
+    /* Active 狀態 */
+    active:translate-y-[1px]
+    active:from-indigo-900 active:via-blue-900 active:to-blue-950
+    active:shadow-sm
+    
+    /* 過渡效果 */
+    transition-all duration-150 ease-in-out;
+}
+
+.button-base-save {
+  @apply h-9 px-6 
+    /* 主要狀態 */
+    bg-gradient-to-r from-emerald-800 via-green-800 to-teal-900
+    text-emerald-100 text-sm font-medium
+    rounded-full border border-emerald-700/20
+    shadow-md shadow-emerald-900/30
+    relative overflow-hidden
+    
+    /* Hover 狀態 */
+    hover:from-emerald-700 hover:via-green-700 hover:to-teal-800
+    hover:text-white
+    hover:border-emerald-600/30
+    hover:shadow-lg hover:shadow-emerald-900/40
+    hover:translate-y-[-1px]
+    
+    /* Active 狀態 */
+    active:translate-y-[1px]
+    active:from-emerald-900 active:via-green-900 active:to-teal-950
+    active:shadow-sm
+    
+    /* 過渡效果 */
+    transition-all duration-150 ease-in-out;
+}
+
+.button-base::before {
+  content: '';
+  @apply absolute w-16 h-full top-0 -left-10
+    bg-gradient-to-r from-transparent 
+    via-white/10 to-transparent
+    animate-[shine_1.5s_ease-in-out_infinite];
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  50%, 100% {
+    transform: translateX(300%) skewX(-15deg);
+  }
+}
+
+/* Input */
+.input-base,
+.select-base,
+.date-input {
+  @apply h-9 rounded-lg border-0 px-3 text-sm text-slate-900 
+    ring-1 ring-inset ring-slate-200
+    bg-white/50 backdrop-blur-sm
+    placeholder:text-slate-900
+    focus:ring-2 focus:ring-inset focus:ring-indigo-500
+    hover:ring-slate-300
+    transition-colors duration-150;
+    min-width: 180px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Select 特定樣式 */
+.select-base {
+  @apply pr-8; /* 增加右側內邊距，避免文字被箭頭遮住 */
+  text-align-last: center; /* 確保選項文字置中 */
+  color: #0f172a; /* 添加深色文字 */
+}
+
+.select-base option {
+  text-align: center; /* 確保下拉選項文字置中 */
+  direction: ltr; /* 確保文字方向正確 */
+  color: #0f172a; /* 添加深色文字 */
+}
+
+/* Date Picker */
+[class*="date-picker-custom"] {
+  width: 100%;
+  color: black;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.chart-container {
+  position: relative;
+  filter: drop-shadow(0 4px 6px rgba(37, 99, 235, 0.1));
+}
+
+.percentage-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.percentage {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: rgb(30, 58, 138);
+  line-height: 1.2;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
+  margin-top: 0.25rem;
+}
+
+/* 確保數字對齊 */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
