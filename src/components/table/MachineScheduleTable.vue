@@ -1,13 +1,13 @@
 <template>
-  <div class="overflow-x-auto bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5">
-    <table class="min-w-full divide-y divide-gray-300">
+  <div class="schedule-table-container">
+    <table class="schedule-table">
       <thead>
-        <tr class="bg-gradient-to-r from-zinc-700 via-gray-800 to-slate-900">
-          <th scope="col" class="w-12 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="flex items-center whitespace-nowrap">
+        <tr class="schedule-table-header">
+          <th scope="col" class="schedule-header-cell w-12">
+            <div class="schedule-header-content">
               <div class="group inline-flex cursor-pointer ml-2">
                 次序
-                <span class="ml-2 flex-none rounded text-gray-400">
+                <span class="schedule-sort-icon">
                   <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
                       d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -17,130 +17,146 @@
               </div>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
-              品號
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-32">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+                品號
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="min-w-[300px] px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
-              品名-規格
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell min-w-[300px]">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+                品名-規格
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
-              預計產量
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-24 text-center">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+                預計產量
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
-              已生產數
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-24 text-center">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+                已生產數
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
-              排產數量
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-32 text-center">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+                排產數量
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
-              標準工時
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-32 text-center">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+                標準工時
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
-              總工時
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-24 text-center">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+                總工時
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
-              製令單號
-              <span class="ml-2 flex-none rounded text-gray-400">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                    clip-rule="evenodd" />
-                </svg>
-              </span>
+          <th scope="col" class="schedule-header-cell w-32 text-center">
+            <div class="schedule-header-content">
+              <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+                製令單號
+                <span class="schedule-sort-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-200 bg-white">
-        <tr v-for="(item, index) in tableData" :key="index" class="hover:bg-gray-50 transition-colors duration-200">
-          <td class="px-3 py-4 text-sm text-gray-900">
+      <tbody class="schedule-table-body">
+        <tr v-for="(item, index) in tableData"
+            :key="index"
+            class="schedule-row">
+          <td class="schedule-cell text-gray-900">
             <div class="flex items-center">
               <span class="ml-2">{{ index + 1 }}</span>
             </div>
           </td>
-          <td class="px-3 py-4 text-sm text-gray-700">{{ item.productId }}</td>
-          <td class="px-3 py-4 text-sm text-gray-700 ">{{ item.productName }}</td>
-          <td class="px-3 py-4 text-center">
-            <div class="text-emerald-600 font-medium">{{ item.plannedQuantity }}</div>
+          <td class="schedule-cell text-gray-700">{{ item.productId }}</td>
+          <td class="schedule-cell text-gray-700">{{ item.productName }}</td>
+          <td class="schedule-cell text-center">
+            <div class="schedule-cell-success">{{ item.plannedQuantity }}</div>
           </td>
-          <td class="px-3 py-4 text-center">
-            <div class="text-sky-600 font-medium">{{ item.producedQuantity }}</div>
+          <td class="schedule-cell text-center">
+            <div class="schedule-cell-info">{{ item.producedQuantity }}</div>
           </td>
-          <td class="px-3 py-4 text-center">
+          <td class="schedule-cell text-center">
             <div class="text-gray-900 font-medium">{{ item.scheduledQuantity }}</div>
           </td>
-          <td class="px-3 py-4 text-center">
+          <td class="schedule-cell text-center">
             <div class="text-gray-900 font-medium">{{ item.manualWorkHours }}</div>
           </td>
-          <td class="px-3 py-4 text-center text-gray-700">{{ item.erpWorkHours }}</td>
-          <td class="px-3 py-4">
-            <div class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-sm font-medium whitespace-nowrap">
-              {{ item.orderCode }}
-            </div>
+          <td class="schedule-cell text-center text-gray-700">{{ item.erpWorkHours }}</td>
+          <td class="schedule-cell">
+            <div class="schedule-cell-primary">{{ item.orderCode }}</div>
           </td>
         </tr>
       </tbody>
@@ -150,7 +166,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import Pagination from '../Pagination.vue'
 
 const tableData = ref([

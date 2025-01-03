@@ -1,15 +1,14 @@
 <template>
-  <div class="overflow-x-auto bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5">
-    <table class="min-w-full divide-y divide-gray-300">
+  <div class="table-container">
+    <table class="table-base">
       <thead>
-        <tr class="bg-gradient-to-r from-zinc-700 via-gray-800 to-slate-900">
-          <th scope="col" class="w-12 px-3 py-3.5 text-left text-sm font-semibold text-white">
+        <tr class="table-header">
+          <th scope="col" class="table-header-cell w-12">
             <div class="flex items-center">
-              <input type="checkbox" :checked="isAllSelected" @change="handleSelectAll"
-                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
-              <div class="group inline-flex items-center cursor-pointer ml-2 whitespace-nowrap">
+              <input type="checkbox" class="table-checkbox" :checked="isAllSelected" @change="handleSelectAll">
+              <div class="group table-header-content">
                 #
-                <span class="ml-2 flex-none rounded text-gray-400">
+                <span class="table-sort-icon">
                   <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
                       d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -19,10 +18,10 @@
               </div>
             </div>
           </th>
-          <th scope="col" class="w-20 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+          <th scope="col" class="table-header-cell w-20">
+            <div class="group table-header-content">
               包裝日
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -31,10 +30,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+          <th scope="col" class="table-header-cell w-24">
+            <div class="group table-header-content">
               客戶代號
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -43,10 +42,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+          <th scope="col" class="table-header-cell w-24">
+            <div class="group table-header-content">
               訂單號碼
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -55,10 +54,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-20 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+          <th scope="col" class="table-header-cell w-20">
+            <div class="group table-header-content">
               訂單序號
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -67,10 +66,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+          <th scope="col" class="table-header-cell w-32">
+            <div class="group table-header-content">
               品號
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -79,10 +78,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="min-w-[300px] px-3 py-3.5 text-left text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap">
+          <th scope="col" class="min-w-[300px]">
+            <div class="group table-header-content">
               品名-規格
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -91,10 +90,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-24">
+            <div class="group table-header-content">
               預計產量
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -103,10 +102,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-24">
+            <div class="group table-header-content">
               已生產數
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -115,10 +114,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-32">
+            <div class="group table-header-content">
               排產數量
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -127,10 +126,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-32">
+            <div class="group table-header-content">
               手動工時
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -139,10 +138,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-24">
+            <div class="group table-header-content">
               ERP工時
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -151,10 +150,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-24 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-24">
+            <div class="group table-header-content">
               庫存
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -163,10 +162,10 @@
               </span>
             </div>
           </th>
-          <th scope="col" class="w-32 px-3 py-3.5 text-center text-sm font-semibold text-white">
-            <div class="group inline-flex items-center cursor-pointer whitespace-nowrap justify-center">
+          <th scope="col" class="table-header-cell w-32">
+            <div class="group table-header-content">
               製令單號
-              <span class="ml-2 flex-none rounded text-gray-400">
+              <span class="table-sort-icon">
                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
                     d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
@@ -177,68 +176,70 @@
           </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-200 bg-white">
-        <tr v-for="(item, index) in tableData" :key="index" class="hover:bg-gray-50 transition-colors duration-200"
-          :class="{ 'bg-indigo-50': selectedRows.has(index) }">
-          <td class="px-3 py-4 text-sm text-gray-900">
+      <tbody class="table-body">
+        <tr v-for="(item, index) in tableData"
+            :key="index"
+            class="table-row"
+            :class="{ 'table-row-selected': selectedRows.has(index) }">
+          <td class="table-cell">
             <div class="flex items-center">
-              <input type="checkbox" :checked="selectedRows.has(index)" @change="handleRowSelect(index)"
-                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+              <input type="checkbox"
+                     class="table-checkbox"
+                     :checked="selectedRows.has(index)"
+                     @change="handleRowSelect(index)">
               <span class="ml-2">{{ index + 1 }}</span>
             </div>
           </td>
-          <td class="px-3 py-4">
-            <div class="px-2 py-0.5 bg-red-50 text-red-600 rounded text-sm font-medium w-fit">
+          <td class="table-cell">
+            <div class="table-cell-highlight">
               {{ item.packageDate }}
             </div>
           </td>
-          <td class="px-3 py-4 text-sm text-gray-700">{{ item.customerCode }}</td>
-          <td class="px-3 py-4 text-sm text-gray-700">{{ item.orderNumber }}</td>
-          <td class="px-3 py-4 text-sm text-gray-700">{{ item.orderSeq }}</td>
-          <td class="px-3 py-4 text-sm text-gray-700">{{ item.productId }}</td>
-          <td class="px-3 py-4 text-sm text-gray-700 whitespace-pre-line">{{ item.productName }}</td>
-          <td class="px-3 py-4 text-center">
-            <div class="text-emerald-600 font-medium">{{ item.plannedQuantity }}</div>
+          <td class="table-cell text-sm text-gray-700">{{ item.customerCode }}</td>
+          <td class="table-cell text-sm text-gray-700">{{ item.orderNumber }}</td>
+          <td class="table-cell text-sm text-gray-700">{{ item.orderSeq }}</td>
+          <td class="table-cell text-sm text-gray-700">{{ item.productId }}</td>
+          <td class="table-cell text-sm text-gray-700 whitespace-pre-line">{{ item.productName }}</td>
+          <td class="table-cell text-center">
+            <div class="table-cell-success">{{ item.plannedQuantity }}</div>
           </td>
-          <td class="px-3 py-4 text-center">
-            <div class="text-sky-600 font-medium">{{ item.producedQuantity }}</div>
+          <td class="table-cell text-center">
+            <div class="table-cell-success">{{ item.producedQuantity }}</div>
           </td>
-          <td class="px-3 py-4">
-            <div class="flex items-center justify-center gap-1">
-              <button class="text-green-500 hover:text-green-600 focus:outline-none text-lg font-medium"
+          <td class="table-cell">
+            <div class="table-quantity-control">
+              <button class="table-quantity-button-increase"
                 @click="handleScheduledQuantityChange(item, 'increase')">
                 +
               </button>
               <input type="number" v-model="item.scheduledQuantity" min="0"
                 @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')"
-                class="w-16 px-2 py-1 text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-              <button class="text-red-500 hover:text-red-600 focus:outline-none text-lg font-medium"
+                class="table-quantity-input">
+              <button class="table-quantity-button-decrease"
                 @click="handleScheduledQuantityChange(item, 'decrease')">
                 -
               </button>
             </div>
           </td>
-          <td class="px-3 py-4">
-            <div class="flex items-center justify-center gap-1">
-              <button class="text-green-500 hover:text-green-600 focus:outline-none text-lg font-medium"
+          <td class="table-cell">
+            <div class="table-quantity-control">
+              <button class="table-quantity-button-increase"
                 @click="handleManualWorkHoursChange(item, 'increase')">
                 +
               </button>
               <input type="number" v-model="item.manualWorkHours" min="0"
                 @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')"
-                class="w-16 px-2 py-1 text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-              <button class="text-red-500 hover:text-red-600 focus:outline-none text-lg font-medium"
+                class="table-quantity-input">
+              <button class="table-quantity-button-decrease"
                 @click="handleManualWorkHoursChange(item, 'decrease')">
                 -
               </button>
             </div>
           </td>
-          <td class="px-3 py-4 text-center text-gray-700">{{ item.erpWorkHours }}</td>
-          <td class="px-3 py-4 text-center text-gray-700">{{ item.stock }}</td>
-          <td class="px-3 py-4">
-            <div class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-sm font-medium whitespace-nowrap">
-              {{ item.orderCode }}
-            </div>
+          <td class="table-cell text-center text-gray-700">{{ item.erpWorkHours }}</td>
+          <td class="table-cell text-center text-gray-700">{{ item.stock }}</td>
+          <td class="table-cell">
+            <div class="table-cell-primary">{{ item.orderCode }}</div>
           </td>
         </tr>
       </tbody>

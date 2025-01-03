@@ -1,7 +1,7 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4">
-    <div class="bg-white rounded-xl shadow-lg ring-1 ring-black/5 p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
-      <div class="relative w-full max-w-[12rem] h-auto aspect-square mx-auto chart-container">
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-wrapper">
         <Doughnut
           :data="completionChartData"
           :options="chartOptions"
@@ -13,8 +13,8 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-xl shadow-lg ring-1 ring-black/5 p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
-      <div class="relative w-full max-w-[12rem] h-auto aspect-square mx-auto chart-container">
+    <div class="chart-card">
+      <div class="chart-wrapper">
         <Doughnut
           :data="executionChartData"
           :options="chartOptions"

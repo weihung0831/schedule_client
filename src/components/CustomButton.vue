@@ -3,7 +3,7 @@
     <button
       type="button"
       v-if="showSearch"
-      class="button-base w-24"
+      class="search-button"
       @click="handleClick"
     >
       搜尋
@@ -11,7 +11,7 @@
     <button
       type="button"
       v-if="showSave"
-      class="button-base-save w-24"
+      class="save-button"
     >
       存檔
     </button>

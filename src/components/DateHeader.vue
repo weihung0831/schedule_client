@@ -1,54 +1,46 @@
 <template>
-  <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-    <div class="flex items-center">
-      <button
-        class="flex-none p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-colors"
-        @click="previousWeek"
-      >
+  <div class="date-header">
+    <div class="date-nav">
+      <button class="date-nav-button" @click="previousWeek">
         <span class="sr-only">Previous</span>
-        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+        <svg class="date-nav-icon" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
       </button>
 
-      <div class="flex-1 overflow-hidden">
-        <div ref="scrollContainer" class="flex overflow-x-auto scrollbar-hide scroll-smooth">
+      <div class="date-scroll">
+        <div ref="scrollContainer" class="date-scroll-container scrollbar-hide">
           <div v-for="(date, index) in dateList"
             :key="index"
             :ref="date.isSelected ? setSelectedRef : undefined"
-            class="flex-none w-[5rem] flex flex-col items-center justify-center py-2 cursor-pointer transition-all duration-200"
             :class="[
-              date.isToday ? 'bg-blue-50' : 'hover:bg-gray-50',
-              date.isSelected ? 'bg-blue-100' : '',
+              'date-item',
+              date.isToday ? 'date-item-today' : 'hover:bg-gray-50',
+              date.isSelected ? 'date-item-selected' : '',
             ]"
             @click="selectDate(date)"
           >
-            <div class="text-xs font-medium whitespace-nowrap min-w-[3rem] text-center"
-              :class="[
-                date.isToday ? 'text-blue-600' : 'text-gray-500',
-                date.isSelected ? 'text-blue-700' : ''
-              ]"
-            >
+            <div :class="[
+              'date-weekday',
+              date.isToday ? 'date-weekday-today' : 'text-gray-500',
+              date.isSelected ? 'date-weekday-selected' : ''
+            ]">
               {{ date.weekday }}
             </div>
-            <div class="text-sm font-medium whitespace-nowrap min-w-[3.5rem] text-center"
-              :class="[
-                date.isToday ? 'text-blue-600 font-semibold' : 'text-gray-700',
-                date.isSelected ? 'text-blue-700 font-semibold' : ''
-              ]"
-            >
+            <div :class="[
+              'date-display',
+              date.isToday ? 'date-display-today' : 'text-gray-700',
+              date.isSelected ? 'date-display-selected' : ''
+            ]">
               {{ date.display }}
             </div>
           </div>
         </div>
       </div>
 
-      <button
-        class="flex-none p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-colors"
-        @click="nextWeek"
-      >
+      <button class="date-nav-button" @click="nextWeek">
         <span class="sr-only">Next</span>
-        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+        <svg class="date-nav-icon" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
       </button>

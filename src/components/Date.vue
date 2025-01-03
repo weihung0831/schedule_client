@@ -1,6 +1,6 @@
 <template>
-  <div v-if="showDate" class="w-full">
-    <input v-if="!isRange" type="date" v-model="dateStore.singleDate" class="date-input w-full text-center" />
+  <div v-if="showDate" class="date-container">
+    <input v-if="!isRange" type="date" v-model="dateStore.singleDate" class="date-input" />
 
     <VueDatePicker v-if="isRange" v-model="dateStore.dateRange" range format="yyyy-MM-dd" :teleport="true"
       :auto-position="true" :hide-input-icon="true" class="date-picker-custom" />

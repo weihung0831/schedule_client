@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-slate-50">
+  <div class="page-container">
     <NavBar :show-selectors="true" />
-    <div class="flex-1 p-2 sm:p-4">
-      <div class="max-w-full mx-2 sm:mx-4">
+    <div class="page-content">
+      <div class="page-content-wrapper">
         <DateHeader />
         <AttemptedLoad v-if="searchStore.hasAttemptedLoad" />
-        <div class="mt-6">
+        <div class="chart-section">
           <Chart v-if="dateStore.showChart" />
           <MachineScheduleTable v-if="dateStore.showTable" />
         </div>

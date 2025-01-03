@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-slate-50">
+  <div class="app-container">
     <NavBar />
-    <div class="flex-1 p-2 sm:p-4">
-      <div class="max-w-full mx-2 sm:mx-4">
+    <div class="main-content">
+      <div class="content-wrapper">
         <Search :showMachine="true" :showProductLine="true" :showCustomer="true" :showPackingDate="true"
           :showOrderNumber="true" :showReset="true" />
         <PaddingTable v-if="searchStore.showTable" />

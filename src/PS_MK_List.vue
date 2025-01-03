@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-slate-50">
+  <div class="page-container">
     <NavBar />
-    <div class="flex-1 p-2 sm:p-4">
-      <div class="max-w-full mx-2 sm:mx-4">
+    <div class="page-content">
+      <div class="page-content-wrapper">
         <DateHeader />
         <!-- 生產表格區域 -->
-        <div class="mt-6">
+        <div class="schedule-section">
           <TotalScheduleTable />
         </div>
       </div>
