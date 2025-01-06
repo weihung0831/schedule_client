@@ -22,8 +22,16 @@
             <router-link to="/PS_MK_List" class="nav-link" active-class="nav-link-active">總排程</router-link>
           </div>
           <div class="nav-selectors" v-if="showSelectors">
-            <CustomSelect :showSelectProductLine="true" class="nav-selector nav-selector-first" />
-            <CustomSelect :showSelectMachine="true" class="nav-selector" />
+            <CustomSelect
+              type="productLine"
+              :readState="false"
+              class="nav-selector nav-selector-first"
+            />
+            <CustomSelect
+              type="machine"
+              :readState="false"
+              class="nav-selector"
+            />
           </div>
         </div>
       </div>

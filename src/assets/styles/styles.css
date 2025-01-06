@@ -31,7 +31,7 @@
       ring-1 ring-inset ring-slate-200
       bg-white/50 backdrop-blur-sm
       transition-colors duration-150
-      min-w-[180px] w-full
+      min-w-[140px] w-full
       text-slate-900
       placeholder:text-slate-900
       whitespace-nowrap overflow-hidden text-ellipsis
@@ -48,7 +48,7 @@
       ring-1 ring-inset ring-slate-200
       bg-white/50 backdrop-blur-sm
       transition-colors duration-150
-      min-w-[180px] w-full
+      min-w-[140px] w-full
       text-slate-900
       placeholder:text-slate-900
       whitespace-nowrap overflow-hidden text-ellipsis
@@ -377,7 +377,7 @@
       ring-1 ring-inset ring-slate-200
       bg-white/50 backdrop-blur-sm
       transition-colors duration-150
-      min-w-[180px] w-full
+      min-w-[140px] w-full
       text-slate-900
       placeholder:text-slate-900
       whitespace-nowrap overflow-hidden text-ellipsis
