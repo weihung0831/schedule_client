@@ -7,7 +7,7 @@
       @change="onProductLineChange"
     >
       <option value="">請選擇生產線</option>
-      <option v-for="line in productLineStore.productLines" :value="line.id">
+      <option v-for="line in productLineStore.productLines" :value="line.code">
         {{ line.name }}
       </option>
     </select>

@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { apiUrl } from './config'
 
-export const getMachinesApi = async (productLineId) => {
+export const getMachinesApi = async (productLineCode) => {
   try {
     const params = {
-      product_line_id: productLineId
+      product_line_code: productLineCode
     }
 
     const response = await axios.get(`${apiUrl}/getMachines`, { params })

@@ -27,13 +27,16 @@ import MachineScheduleTable from './components/table/MachineScheduleTable.vue'
 // Stores
 import { useSearchStore } from './stores/searchStore'
 import { useDateStore } from './stores/dateStore'
+import { useProductLineStore } from './stores/productLineStore'
 
 const searchStore = useSearchStore()
 const dateStore = useDateStore()
+const productLineStore = useProductLineStore()
 
-onMounted(() => {
+onMounted(async () => {
   dateStore.setShowTable(false)
   searchStore.hasAttemptedLoad = true
   dateStore.setShowChart(false)
+  await productLineStore.fetchProductLines()
 })
 </script>

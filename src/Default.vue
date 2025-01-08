@@ -35,7 +35,6 @@ onMounted(() => {
 
 onMounted(async () => {
   if (!productLineStore.isInitialized) {
-    console.log('Initializing product lines from Default page')
     await productLineStore.fetchProductLines()
   }
 })

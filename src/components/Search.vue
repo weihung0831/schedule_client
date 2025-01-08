@@ -8,10 +8,6 @@
             <p class="search-field-label">產線</p>
             <CustomSelect type="productLine" class="w-full" />
           </div>
-          <!-- <div class="search-field-group">
-            <p class="search-field-label">機台</p>
-            <CustomSelect type="machine" class="w-full" />
-          </div> -->
           <div class="search-field-group">
             <p class="search-field-label">客戶</p>
             <CustomInput :showCustomer="true" class="w-full" />
