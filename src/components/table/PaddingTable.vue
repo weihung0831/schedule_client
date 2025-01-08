@@ -177,16 +177,12 @@
         </tr>
       </thead>
       <tbody class="table-body">
-        <tr v-for="(item, index) in tableData"
-            :key="index"
-            class="table-row"
-            :class="{ 'table-row-selected': selectedRows.has(index) }">
+        <tr v-for="(item, index) in tableData" :key="index" class="table-row"
+          :class="{ 'table-row-selected': selectedRows.has(index) }">
           <td class="table-cell">
             <div class="flex items-center">
-              <input type="checkbox"
-                     class="table-checkbox"
-                     :checked="selectedRows.has(index)"
-                     @change="handleRowSelect(index)">
+              <input type="checkbox" class="table-checkbox" :checked="selectedRows.has(index)"
+                @change="handleRowSelect(index)">
               <span class="ml-2">{{ index + 1 }}</span>
             </div>
           </td>
@@ -208,30 +204,24 @@
           </td>
           <td class="table-cell">
             <div class="table-quantity-control">
-              <button class="table-quantity-button-increase"
-                @click="handleScheduledQuantityChange(item, 'increase')">
+              <button class="table-quantity-button-increase" @click="handleScheduledQuantityChange(item, 'increase')">
                 +
               </button>
               <input type="number" v-model="item.scheduledQuantity" min="0"
-                @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')"
-                class="table-quantity-input">
-              <button class="table-quantity-button-decrease"
-                @click="handleScheduledQuantityChange(item, 'decrease')">
+                @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')" class="table-quantity-input">
+              <button class="table-quantity-button-decrease" @click="handleScheduledQuantityChange(item, 'decrease')">
                 -
               </button>
             </div>
           </td>
           <td class="table-cell">
             <div class="table-quantity-control">
-              <button class="table-quantity-button-increase"
-                @click="handleManualWorkHoursChange(item, 'increase')">
+              <button class="table-quantity-button-increase" @click="handleManualWorkHoursChange(item, 'increase')">
                 +
               </button>
               <input type="number" v-model="item.manualWorkHours" min="0"
-                @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')"
-                class="table-quantity-input">
-              <button class="table-quantity-button-decrease"
-                @click="handleManualWorkHoursChange(item, 'decrease')">
+                @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')" class="table-quantity-input">
+              <button class="table-quantity-button-decrease" @click="handleManualWorkHoursChange(item, 'decrease')">
                 -
               </button>
             </div>
@@ -247,6 +237,10 @@
     <Pagination />
   </div>
   <div class="flex justify-end items-center mt-4 gap-4">
+    <div class="search-field-group">
+      <p class="search-field-label">機台</p>
+      <CustomSelect type="machine" class="w-full" />
+    </div>
     <p class="text-sm font-medium text-slate-600 whitespace-nowrap">排程日期</p>
     <Date :showDate="true" class="w-[240px]" />
     <CustomButton :showSave="true" />
@@ -258,6 +252,7 @@ import { ref, computed } from 'vue'
 import CustomButton from '../CustomButton.vue'
 import Date from '../Date.vue'
 import Pagination from '../Pagination.vue'
+import CustomSelect from '../CustomSelect.vue'
 
 const tableData = ref([
   {
