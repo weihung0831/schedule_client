@@ -1,153 +1,1004 @@
-/* Button */
-.button-base {
-  @apply h-9 px-6 
-    /* 主要狀態 */
-    bg-gradient-to-r from-indigo-800 via-blue-800 to-blue-900
-    text-sky-100 text-sm font-medium
-    rounded-full border border-blue-700/20
-    shadow-md shadow-blue-900/30
-    relative overflow-hidden
-    
-    /* Hover 狀態 */
-    hover:from-indigo-700 hover:via-blue-700 hover:to-blue-800
-    hover:text-white
-    hover:border-blue-600/30
-    hover:shadow-lg hover:shadow-blue-900/40
-    hover:translate-y-[-1px]
-    
-    /* Active 狀態 */
-    active:translate-y-[1px]
-    active:from-indigo-900 active:via-blue-900 active:to-blue-950
-    active:shadow-sm
-    
-    /* 過渡效果 */
-    transition-all duration-150 ease-in-out;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.button-base-save {
-  @apply h-9 px-6 
-    /* 主要狀態 */
-    bg-gradient-to-r from-emerald-800 via-green-800 to-teal-900
-    text-emerald-100 text-sm font-medium
-    rounded-full border border-emerald-700/20
-    shadow-md shadow-emerald-900/30
-    relative overflow-hidden
-    
-    /* Hover 狀態 */
-    hover:from-emerald-700 hover:via-green-700 hover:to-teal-800
-    hover:text-white
-    hover:border-emerald-600/30
-    hover:shadow-lg hover:shadow-emerald-900/40
-    hover:translate-y-[-1px]
-    
-    /* Active 狀態 */
-    active:translate-y-[1px]
-    active:from-emerald-900 active:via-green-900 active:to-teal-950
-    active:shadow-sm
-    
-    /* 過渡效果 */
-    transition-all duration-150 ease-in-out;
-}
-
-.button-base::before {
-  content: '';
-  @apply absolute w-16 h-full top-0 -left-10
-    bg-gradient-to-r from-transparent 
-    via-white/10 to-transparent
-    animate-[shine_1.5s_ease-in-out_infinite];
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%) skewX(-15deg);
+/* 基礎層 */
+@layer base {
+  :root {
+    --transition-default: 150ms;
+    --shadow-color-blue: rgb(30 58 138 / 0.3);
+    --shadow-color-emerald: rgb(6 78 59 / 0.3);
   }
-  50%, 100% {
-    transform: translateX(300%) skewX(-15deg);
+
+  /* 移除數字輸入框的上下箭頭 */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
   }
 }
 
-/* Input */
-.input-base,
-.select-base,
-.date-input {
-  @apply h-9 rounded-lg border-0 px-3 text-sm text-slate-900 
-    ring-1 ring-inset ring-slate-200
-    bg-white/50 backdrop-blur-sm
-    placeholder:text-slate-900
-    focus:ring-2 focus:ring-inset focus:ring-indigo-500
-    hover:ring-slate-300
-    transition-colors duration-150;
-    min-width: 180px;
-    width: 100%;
+/* 元件層 */
+@layer components {
+  /* Form Controls */
+  .form-control-base {
+    @apply h-9 rounded-lg border-0 px-3 text-sm
+      ring-1 ring-inset ring-slate-200
+      bg-white/50 backdrop-blur-sm
+      transition-colors duration-150
+      min-w-[140px] w-full
+      text-slate-900
+      placeholder:text-slate-900
+      whitespace-nowrap overflow-hidden text-ellipsis
+      focus:ring-2 focus:ring-inset focus:ring-indigo-500
+      hover:ring-slate-300;
+  }
+
+  .input-base {
+    @apply form-control-base;
+  }
+
+  .select-base {
+    @apply h-8 rounded-lg border-0 px-2 text-sm
+      ring-1 ring-inset ring-slate-200
+      bg-white/50 backdrop-blur-sm
+      transition-colors duration-150
+      w-32
+      text-slate-900
+      placeholder:text-slate-900
+      whitespace-nowrap overflow-hidden text-ellipsis
+      focus:ring-2 focus:ring-inset focus:ring-indigo-500
+      hover:ring-slate-300
+      text-left;
+  }
+
+  .select-base option {
+    @apply text-left text-slate-900;
+    direction: ltr;
+  }
+
+  .date-input {
+    @apply form-control-base;
+  }
+
+  /* Buttons */
+  .button-common {
+    @apply h-9 px-6 text-sm font-medium rounded-full 
+      relative overflow-hidden transition-all duration-150 ease-in-out
+      border
+      shadow-md
+      hover:-translate-y-[1px]
+      active:translate-y-[1px]
+      active:shadow-sm;
+  }
+
+  .search-button {
+    @apply button-common w-24
+      bg-gradient-to-r from-indigo-800 via-blue-800 to-blue-900
+      text-sky-100 
+      border-blue-700/20
+      shadow-blue-900/30
+      hover:from-indigo-700 hover:via-blue-700 hover:to-blue-800
+      hover:text-white
+      hover:border-blue-600/30
+      hover:shadow-lg hover:shadow-blue-900/40
+      active:from-indigo-900 active:via-blue-900 active:to-blue-950;
+  }
+
+  .save-button {
+    @apply button-common w-24
+      bg-gradient-to-r from-emerald-800 via-green-800 to-teal-900
+      text-emerald-100
+      border-emerald-700/20
+      shadow-emerald-900/30
+      hover:from-emerald-700 hover:via-green-700 hover:to-teal-800
+      hover:text-white
+      hover:border-emerald-600/30
+      hover:shadow-lg hover:shadow-emerald-900/40
+      active:from-emerald-900 active:via-green-900 active:to-teal-950;
+  }
+
+  .button-base::before {
+    content: "";
+    @apply absolute w-16 h-full top-0 -left-10
+      bg-gradient-to-r from-transparent via-white/10 to-transparent
+      animate-[shine_1.5s_ease-in-out_infinite];
+  }
+
+  /* Layout */
+  .app-container {
+    @apply flex flex-col min-h-screen bg-slate-50;
+  }
+
+  .main-content {
+    @apply flex-1 p-2 sm:p-4 mt-[140px] mb-[250px];
+  }
+
+  .content-wrapper {
+    @apply max-w-full mx-2 sm:mx-4;
+  }
+
+  /* Search Components */
+  .search-container {
+    @apply bg-white shadow fixed top-16 left-0 right-0 z-40;
+    overflow-x: auto;
+  }
+
+  .search-header {
+    @apply px-3 sm:px-4 md:px-6 py-4 sm:py-5 bg-white/50 border-b border-slate-200/60;
+    min-width: max-content;
+  }
+
+  .search-field-group {
+    @apply flex items-center gap-2;
     white-space: nowrap;
+  }
+
+  .search-label-base {
+    @apply text-sm font-medium text-slate-600;
+  }
+
+  .search-field-label {
+    @apply search-label-base whitespace-nowrap;
+  }
+
+  .search-reset-button {
+    @apply inline-flex items-center justify-center p-2 rounded-md text-gray-500 
+      hover:text-gray-700 hover:bg-gray-100 focus:outline-none;
+  }
+
+  .search-responsive-field {
+    @apply flex flex-col items-start w-full max-w-[240px] mx-auto;
+  }
+
+  .search-responsive-label {
+    @apply search-label-base mb-1.5;
+  }
+
+  /* Chart Components */
+  .charts-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4;
+  }
+
+  .chart-card {
+    @apply bg-white rounded-xl shadow-lg ring-1 ring-black/5 p-4 sm:p-6 
+      hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .chart-wrapper {
+    @apply relative w-full max-w-[12rem] h-auto aspect-square mx-auto;
+  }
+
+  .chart-container {
+    @apply relative;
+    filter: drop-shadow(0 4px 6px rgba(37, 99, 235, 0.1));
+  }
+
+  .percentage-container {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center;
+  }
+
+  .percentage {
+    @apply text-[1.75rem] font-semibold text-blue-900 leading-tight;
+  }
+
+  .label {
+    @apply text-sm text-gray-500 mt-1;
+  }
+
+  /* Attempted Load Components */
+  .attempted-load-container {
+    @apply flex flex-col items-center justify-center h-64 text-slate-500;
+  }
+
+  .attempted-load-icon {
+    @apply w-16 h-16 mb-4;
+  }
+
+  /* Table Components */
+  .table-container {
+    @apply overflow-x-auto bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5 relative;
+  }
+
+  .table-base {
+    @apply min-w-full divide-y divide-gray-300;
+  }
+
+  .table-header {
+    @apply bg-gradient-to-r from-white via-slate-50 to-white border-y border-slate-200
+      backdrop-blur-sm sticky top-0 z-30;
+  }
+
+  /* Add styles for the checkbox header */
+  .table-header-checkbox {
+    @apply px-3.5 py-3.5 text-left text-sm font-medium text-slate-600 tracking-wide
+      sticky left-0 z-40 bg-inherit shadow-[4px_0_8px_-4px_rgba(148,163,184,0.1)]
+      w-[52px] min-w-[52px] max-w-[52px];
+  }
+
+  /* Add styles for the machine header */
+  .table-header-machine {
+    @apply px-3.5 py-3.5 text-left text-sm font-medium text-slate-600 tracking-wide
+      sticky left-[52px] z-40 bg-inherit shadow-[4px_0_8px_-4px_rgba(148,163,184,0.1)]
+      w-[180px] min-w-[180px] max-w-[180px];
+  }
+
+  .table-header-cell {
+    @apply px-3.5 py-3.5 text-left text-sm font-semibold text-slate-700 tracking-wide;
+  }
+
+  .table-header-content {
+    @apply inline-flex items-center cursor-pointer whitespace-nowrap;
+  }
+
+  .table-sort-icon {
+    @apply ml-2 flex-none rounded text-gray-400;
+  }
+
+  .table-checkbox {
+    @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600;
+  }
+
+  .table-body {
+    @apply divide-y divide-gray-200 bg-white;
+  }
+
+  .table-row {
+    @apply hover:bg-slate-50/70 transition-colors duration-200;
+  }
+
+  .table-row-selected {
+    @apply bg-sky-50/50 hover:bg-sky-50/70;
+  }
+
+  /* Add styles for the checkbox column */
+  .table-cell-checkbox {
+    @apply px-3.5 py-3 text-sm bg-white sticky left-0 z-20 
+      border-b border-slate-100 shadow-[4px_0_8px_-4px_rgba(148,163,184,0.1)]
+      w-[52px] min-w-[52px] max-w-[52px];
+  }
+
+  .table-cell {
+    @apply px-3.5 py-3 text-sm text-slate-600 bg-white/40 border-b border-slate-100;
+  }
+
+  .table-cell-packing-date {
+    @apply px-4 py-3 text-sm 
+      bg-gradient-to-r from-cyan-50 via-sky-50 to-white
+      text-cyan-700 font-medium tracking-wide
+      border-b border-l-2 border-b-slate-100 border-l-cyan-400;
+  }
+
+  .table-cell-plan-begin-date {
+    @apply px-4 py-3 text-sm 
+      bg-gradient-to-r from-lime-50 via-green-50 to-white
+      text-lime-700 font-medium tracking-wide
+      border-b border-l-2 border-b-slate-100 border-l-lime-400;
+  }
+
+  .table-cell-plan-end-date {
+    @apply px-4 py-3 text-sm 
+      bg-gradient-to-r from-amber-50 via-yellow-50 to-white
+      text-amber-700 font-medium tracking-wide
+      border-b border-l-2 border-b-slate-100 border-l-amber-400;
+  }
+
+  .table-cell-machine {
+    @apply px-3 py-2.5 text-sm bg-white sticky z-20
+      border-b border-slate-100 shadow-[4px_0_8px_-4px_rgba(148,163,184,0.1)]
+      w-[180px] min-w-[180px] max-w-[180px];
+  }
+
+  .table-cell-machine .select-base {
+    @apply bg-white text-slate-700 font-medium
+      border border-slate-200 rounded-md
+      hover:border-sky-300 hover:bg-sky-50/30
+      focus:border-sky-400 focus:ring-1 focus:ring-sky-200
+      transition-all duration-200
+      w-full;
+  }
+
+  .table-cell-machine .select-base option {
+    @apply bg-white text-slate-700;
+  }
+
+  .table-cell-center {
+    @apply px-3 py-3 text-center;
+  }
+
+  .table-cell-highlight {
+    @apply px-2.5 py-1 bg-rose-50 text-rose-600 rounded-md text-sm font-medium;
+  }
+
+  .table-cell-success {
+    @apply px-2.5 py-1 bg-emerald-50 text-emerald-600 font-medium rounded-md inline-block min-w-[60px];
+  }
+
+  .table-cell-info {
+    @apply px-2.5 py-1 bg-sky-50 text-sky-600 font-medium rounded-md inline-block min-w-[60px];
+  }
+
+  .table-cell-primary {
+    @apply px-2.5 py-1 bg-violet-50 text-violet-600 rounded-md text-sm font-medium whitespace-nowrap;
+  }
+
+  .table-quantity-control {
+    @apply flex items-center justify-center gap-1.5 px-1 py-0.5 bg-slate-50/50 rounded-lg;
+  }
+
+  .table-quantity-button-increase {
+    @apply w-6 h-6 flex items-center justify-center rounded-md
+      bg-emerald-100 text-emerald-600 hover:bg-emerald-200 
+      transition-colors duration-150 text-sm font-semibold;
+  }
+
+  .table-quantity-button-decrease {
+    @apply w-6 h-6 flex items-center justify-center rounded-md
+      bg-rose-100 text-rose-600 hover:bg-rose-200
+      transition-colors duration-150 text-sm font-semibold;
+  }
+
+  .table-quantity-input {
+    @apply w-16 px-2 py-1 text-center bg-white border border-slate-200 
+      rounded-md text-sm text-slate-700
+      focus:ring-1 focus:ring-sky-200 focus:border-sky-300
+      transition-all duration-150;
+  }
+
+  /* Input Components */
+  .input-container {
+    @apply relative w-full;
+  }
+
+  .input-field {
+    @apply form-control-base;
+  }
+
+  .input-icon {
+    @apply absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400;
+  }
+
+  .input-icon-svg {
+    @apply h-5 w-5;
+  }
+
+  /* Date Picker Components */
+  .date-container {
+    @apply w-40;
+  }
+
+  .date-container-range {
+    @apply w-64;
+  }
+
+  .date-input {
+    @apply form-control-base text-center;
+  }
+
+  .date-picker-custom {
+    @apply w-64;
+  }
+
+  /* Pagination Components */
+  .pagination-container {
+    @apply border-t border-gray-200 px-4 py-3 sm:px-6;
+  }
+
+  .pagination-mobile {
+    @apply flex flex-1 justify-between sm:hidden;
+  }
+
+  .pagination-button {
+    @apply relative inline-flex items-center rounded-md border border-gray-300 
+            bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50;
+  }
+
+  .pagination-desktop {
+    @apply hidden sm:grid sm:grid-cols-3 sm:items-center;
+  }
+
+  .pagination-info {
+    @apply text-sm text-gray-700;
+  }
+
+  .pagination-info-number {
+    @apply font-medium;
+  }
+
+  .pagination-nav {
+    @apply isolate inline-flex -space-x-px rounded-md shadow-sm;
+  }
+
+  .pagination-nav-button {
+    @apply relative inline-flex items-center px-4 py-2 text-sm font-semibold 
+            text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 
+              focus:z-20 focus:outline-offset-0;
+  }
+
+  .pagination-nav-arrow {
+    @apply relative inline-flex items-center px-2 py-2 text-gray-400 
+            ring-1 ring-inset ring-gray-300 hover:bg-gray-50 
+            focus:z-20 focus:outline-offset-0;
+  }
+
+  .pagination-nav-arrow-left {
+    @apply rounded-l-md;
+  }
+
+  .pagination-nav-arrow-right {
+    @apply rounded-r-md;
+  }
+
+  .pagination-ellipsis {
+    @apply relative inline-flex items-center px-4 py-2 text-sm font-semibold 
+            text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0;
+  }
+
+  .pagination-nav-wrapper {
+    @apply w-full flex justify-center;
+  }
+
+  /* Select Components */
+  .select-container {
+    @apply flex flex-row;
+  }
+
+  .select-base {
+    @apply h-8 rounded-lg border-0 px-2 text-sm
+      ring-1 ring-inset ring-slate-200
+      bg-white/50 backdrop-blur-sm
+      transition-colors duration-150
+      w-32
+      text-slate-900
+      placeholder:text-slate-900
+      whitespace-nowrap overflow-hidden text-ellipsis
+      focus:ring-2 focus:ring-inset focus:ring-indigo-500
+      hover:ring-slate-300
+      text-left;
+  }
+
+  .select-base option {
+    @apply text-left text-slate-900;
+    direction: ltr;
+  }
+
+  /* Work Time Table Components */
+  .work-time-date-selector {
+    @apply fixed bottom-[200px] left-0 right-0 px-4 py-2 flex items-center justify-between bg-white border-b border-gray-200 z-40;
+  }
+
+  .work-time-nav-button {
+    @apply p-1.5 text-gray-500 hover:text-gray-700;
+  }
+
+  .work-time-date-range {
+    @apply text-sm font-medium text-gray-900;
+  }
+
+  .work-time-table-container {
+    @apply fixed bottom-0 left-0 right-0 bg-white shadow-lg z-40 h-[200px] overflow-y-auto border-t border-gray-200;
+  }
+
+  .work-time-header {
+    @apply bg-gradient-to-r from-slate-800 to-slate-900 text-white text-sm font-medium;
+  }
+
+  .work-time-header-cell {
+    @apply w-32 px-3 py-3.5 text-left text-sm font-semibold text-white sticky left-0 bg-gradient-to-r from-zinc-700 via-gray-800 to-slate-900;
+  }
+
+  .work-time-date-cell {
+    @apply w-24 px-3 py-3.5 text-center text-sm font-semibold text-white;
+  }
+
+  .work-time-weekday {
+    @apply text-xs text-gray-300;
+  }
+
+  .work-time-machine-cell {
+    @apply px-3 py-4 text-sm text-gray-900 font-medium sticky left-0 bg-white border-r border-gray-200;
+  }
+
+  .work-time-hours {
+    @apply text-blue-600 text-sm;
+  }
+
+  /* Page Layout Components */
+  .page-container {
+    @apply flex flex-col min-h-screen bg-slate-50;
+  }
+
+  .page-content {
+    @apply flex-1 p-2 sm:p-4 mt-20;
+  }
+
+  .page-content-wrapper {
+    @apply max-w-full mx-2 sm:mx-4;
+  }
+
+  .chart-section {
+    @apply mt-6;
+  }
+
+  /* Navigation Components */
+  .nav-container {
+    @apply bg-white shadow fixed top-0 left-0 right-0 z-50;
+  }
+
+  .nav-inner {
+    @apply mx-auto max-w-7xl px-2 sm:px-6 lg:px-8;
+  }
+
+  .nav-header {
+    @apply relative flex h-16 justify-between;
+  }
+
+  .nav-mobile-menu {
+    @apply absolute inset-y-0 left-0 flex items-center sm:hidden;
+  }
+
+  .nav-mobile-button {
+    @apply inline-flex items-center justify-center rounded-md p-2 text-gray-400 
+      hover:bg-gray-100 hover:text-gray-500 focus:outline-none;
+  }
+
+  .nav-brand {
+    @apply flex flex-1 items-center justify-center sm:justify-start;
+  }
+
+  .nav-logo {
+    @apply flex shrink-0 items-center;
+  }
+
+  .nav-logo-image {
+    @apply h-8 w-auto;
+  }
+
+  .nav-desktop-links {
+    @apply hidden sm:ml-6 sm:flex sm:space-x-8;
+  }
+
+  .nav-link {
+    @apply inline-flex items-center border-b-2 border-transparent px-1 pt-1 
+      text-sm font-medium text-gray-500 
+      hover:border-indigo-300 hover:text-indigo-600;
+  }
+
+  .nav-link-active {
+    @apply border-indigo-500 text-gray-900;
+  }
+
+  .nav-selectors {
+    @apply hidden sm:flex sm:items-center sm:space-x-4 sm:ml-auto;
+  }
+
+  .nav-selector {
+    @apply w-40;
+  }
+
+  .nav-selector-first {
+    @apply mr-8;
+  }
+
+  .nav-mobile-panel {
+    @apply sm:hidden;
+  }
+
+  .nav-mobile-links {
+    @apply space-y-1 pb-4 pt-2;
+  }
+
+  .nav-mobile-link {
+    @apply block border-l-4 border-transparent py-2 pl-3 pr-4 
+      text-base font-medium text-gray-500 
+      hover:border-gray-500 hover:bg-gray-200 hover:text-gray-700;
+  }
+
+  /* Date Header Components */
+  .date-header {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200;
+  }
+
+  .date-nav {
+    @apply flex items-center;
+  }
+
+  .date-nav-button {
+    @apply flex-none p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-colors;
+  }
+
+  .date-nav-icon {
+    @apply h-4 w-4;
+  }
+
+  .date-scroll {
+    @apply flex-1 overflow-hidden;
+  }
+
+  .date-scroll-container {
+    @apply flex overflow-x-auto scrollbar-hide scroll-smooth;
+  }
+
+  .date-item {
+    @apply flex-none w-[5rem] flex flex-col items-center justify-center py-2 cursor-pointer 
+      transition-all duration-200;
+  }
+
+  .date-item-today {
+    @apply bg-blue-50;
+  }
+
+  .date-item-selected {
+    @apply bg-blue-100;
+  }
+
+  .date-weekday {
+    @apply text-xs font-medium whitespace-nowrap min-w-[3rem] text-center;
+  }
+
+  .date-weekday-today {
+    @apply text-blue-600;
+  }
+
+  .date-weekday-selected {
+    @apply text-blue-700;
+  }
+
+  .date-display {
+    @apply text-sm font-medium whitespace-nowrap min-w-[3.5rem] text-center;
+  }
+
+  .date-display-today {
+    @apply text-blue-600 font-semibold;
+  }
+
+  .date-display-selected {
+    @apply text-blue-700 font-semibold;
+  }
+
+  /* Machine Schedule Table */
+  .schedule-table-container {
+    @apply overflow-x-auto bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5;
+  }
+
+  .schedule-table {
+    @apply min-w-full divide-y divide-gray-300;
+  }
+
+  .schedule-table-header {
+    @apply bg-gradient-to-r from-zinc-700 via-gray-800 to-slate-900;
+  }
+
+  .schedule-header-cell {
+    @apply px-3 py-3.5 text-left text-base font-semibold text-white;
+  }
+
+  .schedule-header-content {
+    @apply inline-flex items-center cursor-pointer whitespace-nowrap;
+  }
+
+  .schedule-sort-icon {
+    @apply ml-2 flex-none rounded text-gray-400;
+  }
+
+  .schedule-table-body {
+    @apply divide-y divide-gray-200 bg-white;
+  }
+
+  .schedule-row {
+    @apply hover:bg-gray-50 transition-colors duration-200;
+  }
+
+  .schedule-cell {
+    @apply px-3 py-4 text-base;
+  }
+
+  .schedule-cell-success {
+    @apply text-emerald-600 font-medium;
+  }
+
+  .schedule-cell-info {
+    @apply text-sky-600 font-medium;
+  }
+
+  .schedule-cell-primary {
+    @apply px-1.5 py-0.5 bg-indigo-50 text-indigo-600 rounded w-fit;
+  }
+
+  .schedule-section {
+    @apply mt-6;
+  }
+
+  /* Schedule Table Components */
+  .schedule-export-wrapper {
+    @apply flex justify-end mb-4;
+  }
+
+  .schedule-table-container {
+    @apply overflow-x-auto bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5;
+  }
+
+  .schedule-table {
+    @apply min-w-full divide-y divide-gray-300;
+  }
+
+  /* 排程表格 - 表頭樣式 */
+  .schedule-header {
+    @apply bg-gradient-to-r from-zinc-700 via-gray-800 to-slate-900;
+  }
+
+  .schedule-header-cell {
+    @apply px-1.5 py-2 text-left text-sm font-semibold text-white;
+  }
+
+  .schedule-header-cell-wide {
+    @apply px-2 py-2.5 text-left text-sm font-semibold text-white;
+  }
+
+  .schedule-header-cell-center {
+    @apply px-2 py-2.5 text-center text-sm font-semibold text-white;
+  }
+
+  .schedule-header-content {
+    @apply inline-flex items-center cursor-pointer whitespace-nowrap;
+  }
+
+  .schedule-header-content-center {
+    @apply inline-flex items-center cursor-pointer whitespace-nowrap justify-center;
+  }
+
+  .schedule-sort-icon {
+    @apply ml-2 flex-none rounded text-gray-400;
+  }
+
+  /* 排程表格 - 表格內容 */
+  .schedule-row {
+    @apply hover:bg-gray-50 transition-colors duration-200;
+  }
+
+  .schedule-cell {
+    @apply px-3 py-4 text-sm;
+  }
+
+  .schedule-cell-highlight {
+    @apply px-1 py-0.5 bg-red-50 text-red-600 rounded text-sm font-medium w-fit;
+  }
+
+  .schedule-cell-number {
+    @apply text-gray-900 font-medium;
+  }
+
+  .schedule-cell-order {
+    @apply px-1 py-0.5 bg-indigo-50 text-indigo-600 rounded text-sm font-medium whitespace-nowrap;
+  }
+
+  /* 排程表格 - 欄位寬度設定 */
+  .col-index {
+    @apply w-12; /* 序號欄位 */
+  }
+
+  .col-machine {
+    @apply w-20; /* 機台欄位 */
+  }
+
+  .col-date {
+    @apply w-20; /* 日期欄位 */
+  }
+
+  .col-customer {
+    @apply w-24; /* 客戶代號欄位 */
+  }
+
+  .col-order {
+    @apply w-24; /* 訂單號碼欄位 */
+  }
+
+  .col-seq {
+    @apply w-20; /* 訂單序號欄位 */
+  }
+
+  .col-product {
+    @apply w-32; /* 品號欄位 */
+  }
+
+  .col-name {
+    @apply min-w-[500px]; /* 品名規格欄位 */
+  }
+
+  .col-quantity {
+    @apply w-16; /* 數量相關欄位 */
+  }
+
+  .col-work-hours {
+    @apply w-20; /* 工時欄位 */
+  }
+
+  .col-order-code {
+    @apply w-24; /* 製令單號欄位 */
+  }
+
+  /* Excel Export Button */
+  .excel-export-button {
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium 
+            rounded-md text-white bg-gradient-to-r from-blue-600 to-indigo-600 
+          hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 
+            focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-all duration-200 
+            ease-in-out hover:shadow-md;
+  }
+
+  .excel-export-icon {
+    @apply -ml-1 mr-2 h-5 w-5;
+  }
+
+  .fixed-table-container {
+    position: fixed;
+    top: 180px;
+    left: 0;
+    right: 0;
+    bottom: 250px;
+    background-color: white;
+    z-index: 10;
+    padding: 0 1rem;
+    max-width: 100vw;
     overflow: hidden;
-    text-overflow: ellipsis;
+  }
+
+  .table-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 1rem;
+  }
+
+  .work-time-section {
+    margin-top: calc(100vh - 250px);
+    position: relative;
+    z-index: 5;
+    background-color: white;
+  }
+
+  /* Modal Styles */
+  .modal-container {
+    @apply fixed inset-0 bg-slate-900/70 flex items-center justify-center z-50 backdrop-blur-sm;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-2xl shadow-2xl w-[95%] max-w-[1200px] max-h-[90vh] overflow-y-auto;
+  }
+
+  .modal-header {
+    @apply flex justify-between items-center px-8 py-6
+      bg-gradient-to-r from-slate-800 via-gray-800 to-slate-900
+      rounded-t-2xl border-b border-slate-700/50;
+  }
+
+  .modal-title {
+    @apply text-white;
+  }
+
+  .modal-title h3 {
+    @apply text-2xl font-semibold mb-1;
+  }
+
+  .modal-subtitle {
+    @apply text-slate-400 text-sm;
+  }
+
+  .modal-actions {
+    @apply flex items-center gap-4;
+  }
+
+  .save-schedule-button {
+    @apply flex items-center px-4 py-2 text-sm font-medium text-white
+      bg-gradient-to-r from-emerald-600 to-teal-600
+      hover:from-emerald-500 hover:to-teal-500
+      rounded-lg shadow-sm transition-all duration-200
+      disabled:opacity-50 disabled:cursor-not-allowed
+      disabled:hover:from-emerald-600 disabled:hover:to-teal-600;
+  }
+
+  .close-button {
+    @apply p-2 text-slate-400 rounded-lg transition-all duration-200
+      hover:bg-white/10 hover:text-white
+      flex items-center justify-center;
+  }
+
+  .modal-body {
+    @apply p-6;
+  }
+
+  .no-data-container {
+    @apply flex flex-col items-center justify-center py-16 px-4;
+  }
+
+  .no-data-icon {
+    @apply w-16 h-16 text-slate-300 mb-4;
+  }
+
+  .no-data-text {
+    @apply text-base text-slate-500 font-medium;
+  }
+
+  /* Modal Table Styles */
+  .modal-schedule-header {
+    @apply bg-gradient-to-r from-slate-100 via-slate-50 to-white;
+  }
+
+  .modal-schedule-header-cell {
+    @apply px-4 py-3 text-sm font-semibold text-slate-700
+      border-b-2 border-slate-200 whitespace-nowrap
+      first:sticky first:left-0 first:z-10 first:bg-inherit
+      first:shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)];
+  }
+
+  .schedule-row {
+    @apply transition-colors duration-200;
+  }
+
+  .schedule-row:hover {
+    @apply bg-slate-50;
+  }
+
+  .schedule-row-selected {
+    @apply bg-blue-50/70 hover:bg-blue-50;
+  }
+
+  .schedule-cell {
+    @apply px-4 py-3 text-sm text-slate-600 border-b border-slate-200
+      first:sticky first:left-0 first:z-10 first:bg-inherit
+      first:shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)];
+  }
+
+  .schedule-cell-name {
+    @apply max-w-[300px] whitespace-normal;
+  }
+
+  .schedule-qty-badge {
+    @apply inline-block px-2.5 py-1 text-sm font-medium
+      bg-blue-50 text-blue-700 rounded-md;
+  }
+
+  .schedule-hours-badge {
+    @apply inline-block px-2.5 py-1 text-sm font-medium
+      bg-amber-50 text-amber-700 rounded-md;
+  }
+
+  .schedule-mfg-badge {
+    @apply inline-block px-2.5 py-1 text-sm font-medium
+      bg-slate-100 text-slate-600 rounded-md font-mono;
+  }
 }
 
-/* Select 特定樣式 */
-.select-base {
-  @apply pr-8; /* 增加右側內邊距，避免文字被箭頭遮住 */
-  text-align-last: center; /* 確保選項文字置中 */
-  color: #0f172a; /* 添加深色文字 */
-}
+/* 工具層 */
+@layer utilities {
+  /* 閃光動畫效果 */
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
+    50%,
+    100% {
+      transform: translateX(300%) skewX(-15deg);
+    }
+  }
 
-.select-base option {
-  text-align: center; /* 確保下拉選項文字置中 */
-  direction: ltr; /* 確保文字方向正確 */
-  color: #0f172a; /* 添加深色文字 */
-}
+  /* 等寬數字 */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
 
-/* Date Picker */
-[class*="date-picker-custom"] {
-  width: 100%;
-  color: black;
-}
+  /* 隱藏捲軸 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.chart-container {
-  position: relative;
-  filter: drop-shadow(0 4px 6px rgba(37, 99, 235, 0.1));
-}
-
-.percentage-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.percentage {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: rgb(30, 58, 138);
-  line-height: 1.2;
-}
-
-.label {
-  font-size: 0.875rem;
-  color: rgb(107, 114, 128);
-  margin-top: 0.25rem;
-}
-
-/* 確保數字對齊 */
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

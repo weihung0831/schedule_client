@@ -1,5 +1,4 @@
 // CSS imports
-import './assets/main.css'
 import './assets/styles/styles.css'
 
 // Vue imports

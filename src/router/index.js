@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import App from '../App.vue'
-import Default from '../Default.vue'
+import PendingSchedule from '../components/PendingSchedule.vue'
+import MachineSchedule from '../components/MachineSchedule.vue'
+import TotalSchedule from '../components/TotalSchedule.vue'
 import NotFound from '../components/NotFound.vue'
-import PS_MK_List from '../PS_MK_List.vue'
-import PS_MK_Mac from '../PS_MK_Mac.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/schedule/'),
   routes: [
-    { path: '/Default', component: Default },
-    { path: '/App', component: App },
-    { path: '/PS_MK_Mac', component: PS_MK_Mac },
-    { path: '/PS_MK_List', component: PS_MK_List },
+    { path: '/', redirect: '/PendingSchedule' },
+    { path: '/PendingSchedule', component: PendingSchedule },
+    { path: '/MachineSchedule', component: MachineSchedule },
+    { path: '/TotalSchedule', component: TotalSchedule },
     { path: '/:pathMatch(.*)*', component: NotFound }
   ]
 })
